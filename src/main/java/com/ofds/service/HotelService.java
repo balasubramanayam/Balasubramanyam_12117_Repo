@@ -8,27 +8,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ofds.bean.Hotel;
-import com.ofds.bean.User;
 import com.ofds.repo.HotelRepo;
-import com.ofds.repo.UserRepo;
 
 @Service
 public class HotelService {
 
 	@Autowired
 	HotelRepo repo;
-	
+
+	@SuppressWarnings("rawtypes")
 	public List<Hotel> getAllHotel() {
-		Iterator<Hotel> iterator = repo.findAll().iterator();
-		List<Hotel>List1 = new ArrayList();
-        while (iterator.hasNext()) {
-        	List1.add(iterator.next());
-        }
-		return List1 ; 
+		Iterator<Hotel> iterator = repo.getAllHotel().iterator();
+		@SuppressWarnings("unchecked")
+		List<Hotel> List1 = new ArrayList();
+		while (iterator.hasNext()) {
+			List1.add(iterator.next());
+		}
+		return List1;
 	}
-	
+
 	public Hotel getHotelById(int hId) {
-     Hotel hotel =   repo.findById(hId).get()  ;
-        return hotel ;
-    }
+		Hotel hotel = repo.getByHotelId(hId);
+		return hotel;
+	}
 }

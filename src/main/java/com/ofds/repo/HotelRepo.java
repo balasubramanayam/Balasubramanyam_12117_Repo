@@ -1,9 +1,12 @@
 package com.ofds.repo;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
 
 import com.ofds.bean.Hotel;
 
-public interface HotelRepo  extends JpaRepository<Hotel, Integer> {
+public interface HotelRepo {
+	public List<Hotel> getAllHotel();
+
+	public Hotel getByHotelId(int hId);
 
 }
